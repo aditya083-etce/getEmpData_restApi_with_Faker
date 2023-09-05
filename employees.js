@@ -5,25 +5,27 @@ const generateEmployees = (ids) => {
     var employees = []
 
     for(var id=1; id <= ids; id++) {
+         // var father_name = faker.person.firstName("male")
+        // var mother_name = faker.person.firstName("female")\
+        // var dob = faker.date.birthdate().toString().slice(0, 10),
         var gender = faker.person.sex()
-        var father_name = faker.person.firstName("male")
-        var mother_name = faker.person.firstName("female")
         var fname = faker.person.firstName(gender)
-        var surname = faker.person.lastName(gender)
-        var marital_status = faker.datatype.boolean().toString()
-
+        var lname = faker.person.lastName(gender)
+    
         employees.push({
-            "id": id,
-            "full_name": fname + ' ' + surname,
-            "father_name": father_name + ' ' + surname,
-            "mother_name": mother_name + ' ' + surname,
-            "email": fname.slice(0,4) + '@deloitte.com',
-            "gender": gender.charAt(0).toUpperCase() + gender.slice(1),
-            "DOB": faker.date.birthdate().toString().slice(0, 10),
-            "marital_status": marital_status.charAt(0).toUpperCase() + marital_status.slice(1),
-            "countryCode": faker.location.countryCode('alpha-3'),
+            "id": "NEW00" + id.toString(),
+            "gender": gender.charAt(0).toUpperCase(),
+            "firstName": fname,
+            "lastName": lname,
+            "dateOfBirth": faker.date.birthdate({min: 1900, max: 2005, mode: 'year'}),
+            "email": fname.slice(0,4).toLowerCase() + lname + '@deloitte.com',
+            "cellPhone": faker.phone.number('###-###-###'),
+            "married": faker.datatype.boolean(),
+            "country": faker.location.country(),
             "city": faker.location.city(),
             "state": faker.location.state(),
+            "salary": faker.number.float({ min: 20000, max: 500000, precision: 0.1}),
+            "jobTitle": faker.person.jobTitle()
         })
     }
 
