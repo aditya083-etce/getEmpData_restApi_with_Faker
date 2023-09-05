@@ -7,7 +7,7 @@ const path = require('path')
 
 fs.writeFileSync(
   "./db.json",
-  JSON.stringify({ employees: generateEmployees(500) })
+  JSON.stringify({ employees: generateEmployees(107001, 107045) })
 );
 
 const server = jsonServer.create()

@@ -1,10 +1,10 @@
 const { faker } = require('@faker-js/faker');
 
 // name, fathers name, mothers name, marital status, gender, country, city, location, street, house number, ph no, dob
-const generateEmployees = (ids) => {
+const generateEmployees = (startId, endId) => {
     var employees = []
 
-    for(var id=1; id <= ids; id++) {
+    for(var id = startId; id <= endId; id++) {
          // var father_name = faker.person.firstName("male")
         // var mother_name = faker.person.firstName("female")\
         // var dob = faker.date.birthdate().toString().slice(0, 10),
@@ -13,7 +13,8 @@ const generateEmployees = (ids) => {
         var lname = faker.person.lastName(gender)
     
         employees.push({
-            "id": "NEW00" + id.toString(),
+            "id": id,
+            "empId": "TEMP" + id.toString().slice(2),
             "gender": gender.charAt(0).toUpperCase(),
             "firstName": fname,
             "lastName": lname,
